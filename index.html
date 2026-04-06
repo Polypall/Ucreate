@@ -9,14 +9,48 @@
   </head>
   
   <body>
-    <script src="index.js"></script>
     
     <div class="entrancepage">
       
-
 <h1>Welcome to Ucreate, the site for makers</h1>
 
+ <!-- Log-In Form -->
+<form action="/login-endpoint" method="POST">
+  <h2>Log In</h2>
+  <label for="login-user">Username</label>
+  <input type="text" id="login-user" name="username" placeholder="Enter Username" required>
+
+  <label for="login-pass">Password</label>
+  <input type="password" id="login-pass" name="password" placeholder="Enter Password" required>
+
+  <button type="submit">Login</button>
+  <label>
+    <input type="checkbox" name="remember"> Remember me
+  </label>
+  <p><a href="#">Forgot password?</a></p>
+</form>
+
+<hr>
+
+<!-- Sign-Up Form -->
+<form action="/signup-endpoint" method="POST">
+  <h2>Sign Up</h2>
+  <label for="signup-user">Username</label>
+  <input type="text" id="signup-user" name="username" placeholder="Choose Username" required>
+
+  <label for="signup-email">Email</label>
+  <input type="email" id="signup-email" name="email" placeholder="Enter Email" required>
+
+  <label for="signup-pass">Password</label>
+  <input type="password" id="signup-pass" name="password" placeholder="Create Password" required>
+
+  <button type="submit">Sign Up</button>
+</form>
+
+    
     </div>
+    
+     <script src="index.js"></script>
     
   </body>
   
