@@ -1,57 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="x-UA-Compatible" content="ie=edge">
-    <title>Ucreate</title>
-   <link rel="stylesheet" href="styles.css">
-  </head>
-  
-  <body>
-    
-    <div class="entrancepage">
-      
-<h1>Welcome to Ucreate, the site for makers</h1>
+    <title>Unique • Makers Community</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --primary: #91C4F6;
+            --accent: #FE95F6;
+        }
 
- <!-- Log-In Form -->
-<form action="/login-endpoint" method="POST">
-  <h2>Log In</h2>
-  <label for="login-user">Username</label>
-  <input type="text" id="login-user" name="username" placeholder="Enter Username" required>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <label for="login-pass">Password</label>
-  <input type="password" id="login-pass" name="password" placeholder="Enter Password" required>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+                        url('https://i.postimg.cc/vZrvnWpq/opt3.jpg') center/cover no-repeat fixed;
+            color: #fff;
+            min-height: 100vh;
+        }
 
-  <button type="submit">Login</button>
-  <label>
-    <input type="checkbox" name="remember"> Remember me
-  </label>
-  <p><a href="#">Forgot password?</a></p>
-</form>
+        .scrapbook {
+            background: 
+                linear-gradient(#fff 2px, transparent 2px),
+                linear-gradient(90deg, #fff 2px, transparent 2px);
+            background-size: 30px 30px;
+            opacity: 0.08;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-<hr>
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
 
-<!-- Sign-Up Form -->
-<form action="/signup-endpoint" method="POST">
-  <h2>Sign Up</h2>
-  <label for="signup-user">Username</label>
-  <input type="text" id="signup-user" name="username" placeholder="Choose Username" required>
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
 
-  <label for="signup-email">Email</label>
-  <input type="email" id="signup-email" name="email" placeholder="Enter Email" required>
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(254, 149, 246, 0.4);
+        }
 
-  <label for="signup-pass">Password</label>
-  <input type="password" id="signup-pass" name="password" placeholder="Create Password" required>
+        .sign-up-btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(254, 149, 246, 0.4);
+        }
 
-  <button type="submit">Sign Up</button>
-</form>
+        .sign-up-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(254, 149, 246, 0.5);
+        }
 
-    
-    </div>
-    
-     <script src="index.js"></script>
-    
-  </body>
-  
-</html> 
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .left {
+            padding-right: 40px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.2rem;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #eee;
+            max-width: 520px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .right {
+            background: rgba(255,255,255,0.92);
+            color: #333;
+            border-radius: 24px;
+            padding: 48px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            position: relative;
+            border: 8px solid #fff;
+            background-image: 
+                linear-gradient(#f8fafc 1px, transparent 1px),
+                linear-gradient(90deg, #f8fafc 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-align: center;
+            color: #1e2937;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .tally-link {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #91C4F6, #D8B4FE);
+            color: white;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 30px 0 10px;
+            box-shadow: 0 10px 30px rgba(145, 196, 246, 0.4);
+            transition: all 0.3s;
+        }
+
+        .tally-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(145, 196, 246, 0.5);
+        }
+
+        .community {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed #cbd5e1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #334155;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #f1f5f9;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            h1 {
+                font-size: 3.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scrapbook"></div>
+
+    <header>
+        <a href="#" class="logo">
+            <img src="https://i.postimg.cc/W3V2QG5t/In-Shot-20251108-192211830.jpg" alt="Unique Logo">
+            <span>Unique</span>
+        </a>
+        
+        <a href="https://tally.so/r/7RdbLA" target="_blank" class="sign-up-btn">Join Waitlist</a>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <!-- Left Side -->
+            <div class="left">
+                <h1>Where Every Maker<br>Feels <span class="highlight">Seen</span></h1>
+                
+                <p class="subtitle">
+                    A community for makers and creators. 
+                    From painting, drawing, sewing, and crochet to robotics, 
+                    woodwork, cosplay, puppets, and more. 
+                    Built for inventors of all ages and backgrounds.
+                </p>
+            </div>
+
+            <!-- Right Side: Sign-up Card -->
+            <div class="right">
+                <h2 class="form-title">Join the Waitlist</h2>
+                <p class="form-subtitle">Be among the first to join Unique</p>
+                
+                <a href="https://tally.so/r/7RdbLA" target="_blank" class="tally-link">
+                    Sign Up Now
+                </a>
+
+                <div class="community">
+                    <h3>Follow the project</h3>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@polypall4" target="_blank">TikTok</a>
+                        <a href="https://www.youtube.com/@PolypallTech" target="_blank">YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Unique • A community for every kind of maker</p>
+    </footer>
+</body>
+</html>
